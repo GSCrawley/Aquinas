@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 // import axios from 'axios';
 
-export default function ProfileScreen({ route, navigation }) {
+export default function Profile({ route, navigation }) {
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [DOB, setDOB] = useState('');

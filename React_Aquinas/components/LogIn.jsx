@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 // import axios from 'axios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { ContainerStyles, TextStyles, ButtonStyles, Colors } from './Styles.jsx';
 
 export default function LogIn({ route, navigation }) {
@@ -48,7 +47,7 @@ export default function LogIn({ route, navigation }) {
       <TouchableOpacity style={[ButtonStyles.primaryButton, styles.button]} onPress={handleLogin}>
         <Text style={[ButtonStyles.buttonText, styles.buttonText]}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Registration', { url })}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register', { url })}>
         <Text style={[styles.link, TextStyles.body]}>Don't have an account? Register here</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity onPress={() => navigation.navigate('PasswordReset', { url })}>
