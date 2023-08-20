@@ -1,13 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import LotusIcon from './Lotus';
+import SVGatorComponent from '../assets/Lotus.js';
+import axios from 'axios'
 import { useNavigation } from '@react-navigation/native';
 import { ContainerStyles, ButtonStyles, TextStyles } from './Styles';
 
+// const AnimatedIcon = () => {
+//   return (
+//   <View>
+//   <SVGatorComponent style={styles.container}
+//     isAnimationActive={true} />
+//   </View>
+// )
+// };  
+
 export default Home = () => {
-  const [data, setData] = useState('Temp');
+  const [data, setData] = useState(null);
   const [isAnimationActive, setIsAnimationActive] = useState(false);
+  const [cpdata, setCPDATA] = useState(null);
   const navigation = useNavigation();
+
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('http://localhost:6000/patient_server');
+      // const result = await axios.get('https://nomadic-oarlock-392318.uw.r.appspot.com/edge');
+      setData(result.data.url);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     startAnimation();
@@ -27,18 +48,20 @@ export default Home = () => {
 
   return (
     <View style={ContainerStyles.container}>
+      
+            <SVGatorComponent style={styles.container}
+    isAnimationActive={true} />
+
       {data ? (
         <View style={styles.content}>
-          <TouchableOpacity onPress={stopAnimation}>
-            <LotusIcon isAnimationActive={isAnimationActive} />
-          </TouchableOpacity>
+         
           <TouchableOpacity
             style={[ButtonStyles.primaryButton, styles.button]}
             onPress={navigateToLogin}
           >
             <Text style={ButtonStyles.buttonText}>Log In</Text>
           </TouchableOpacity>
-        </View>
+          </View>
       ) : (
         <Text style={TextStyles.body}>Loading...</Text>
       )}
@@ -52,5 +75,10 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 10,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-// import LotusIcon from './Lotus';
-import SVGatorComponent from '../assets/logo_adobe_express';
+import SVGatorComponent from '../assets/Lotus';
+// import SVGatorComponent from '../assets/logo_adobe_express';
 const AnimatedIconTest = () => {
   return (
-    <View style={styles.container}>
-      <SVGatorComponent isAnimationActive={true} />
+    <View>
+    <SVGatorComponent style={styles.container}
+      isAnimationActive={true} />
     </View>
   );
 };

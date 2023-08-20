@@ -1,19 +1,34 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {View, TextInput, Text, TouchableOpacity, ScrollView, StyleSheet, Keyboard} from 'react-native';
-// import axios from 'axios';
+import axios from 'axios';
 
 var symptomsLst = [];
-export default function SymptomFormScreen({route, navigation}) {
+function SymptomFormScreen({route, navigation}) {
   const [symptoms, setSymptoms] = useState([]);
   const [message, setMessage] = useState([]);
   const { token } = route.params;
   var { url } = route.params;
+  const [durl, setURL] = useState([]);
   connectionAttempts = 0
   
   const emptyList = () => {
     symptomsLst = []
   }
+
+  // Function to fetch the URL asynchronously
+  useEffect(() => {
+    const fetchURL = async () => {
+      try {
+        const response = await fetch('http://localhost:6000/disease_server'); // Replace with your actual API URL
+        const data = await response.json();
+        setURL(data.url); // Once the data is fetched, update the 'url' state with the received URL
+      } catch (error) {
+        console.error('Error fetching URL:', error);
+      }
+    };
+    fetchURL();
+  }, []);
 
   const handleSymptomFormSend = async () => {
     const symptomsData = symptomsLst;
@@ -23,13 +38,13 @@ export default function SymptomFormScreen({route, navigation}) {
         });
         setMessage(response.data);
         // console.log(response.data);
-        navigation.navigate('Diagnosis', {message: response.data, token});
+        navigation.navigate('Diagnosis', {message: message, durl: url, token});
         emptyList()
     } catch (error) {
         if (error.request && connectionAttempts <= 5) {
           // Network error (request was made but no response received)
           const fetchData = async () => {
-            const result = await axios.get('http://localhost:6000/');
+            const result = await axios.get('http://localhost:6000/symptoms_server');
             url = result.data.url;
             connectionAttempts = connectionAttempts + 1
             handleSymptomFormSend()
@@ -65,7 +80,7 @@ export default function SymptomFormScreen({route, navigation}) {
         <TextInput style={styles.input} value={symptom} onChangeText={text => setSymptom(text)} placeholder='Write a symptom'/>
         <TouchableOpacity style={styles.button} onPress={() => handleAddSymptom(symptom)}>
           <View>
-              <Text style={styles.buttonText}>Add Symptom</Text>
+              <Text style={styles.buttonText}>Add Symptom/Sign</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={handleSymptomFormSend}>
@@ -120,6 +135,8 @@ export default function SymptomFormScreen({route, navigation}) {
     </ScrollView>
   );
 }
+
+export default SymptomFormScreen
 
 const styles = StyleSheet.create({
     container: {

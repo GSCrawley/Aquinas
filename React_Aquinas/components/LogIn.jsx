@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-// import axios from 'axios';
+import axios from 'axios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ContainerStyles, TextStyles, ButtonStyles, Colors } from './Styles.jsx';
 
@@ -12,7 +12,7 @@ export default function LogIn({ route, navigation }) {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${url}/LogIn`, {
+      const response = await axios.post(`${url}/login`, {
         email: emailInput,
         password: passwordInput,
       });

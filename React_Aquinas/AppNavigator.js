@@ -5,8 +5,8 @@ import Home from './components/Splash.jsx';
 import LogIn from './components/LogIn.jsx';
 import Profile from './components/Profile.jsx';
 import Register from './components/Register.jsx';
-import Symptoms from './components/Symptoms.jsx';
-import DiseaseDetails from './components/DiseaseDetails.jsx';
+import SymptomFormScreen from './components/Symptoms.jsx';
+import Diagnosis from './components/Diagnosis.jsx';
 
 const Stack = createStackNavigator();
 
@@ -17,8 +17,8 @@ function AppNavigator() {
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Symptoms" component={Symptoms} />
-        <Stack.Screen name="DiseaseDetails" component={DiseaseDetails} />
+        <Stack.Screen name="Symptoms" component={SymptomFormScreen} />
+        <Stack.Screen name="Diagnosis" component={Diagnosis} />
   
       </Stack.Navigator>
     );

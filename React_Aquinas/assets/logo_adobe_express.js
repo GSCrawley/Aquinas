@@ -18,7 +18,7 @@ const SVGatorComponent = React.forwardRef((props, ref) => {
                      {...newProps}
                      source={{html}}
                      containerStyle={{flex: 0}}
-                     style={{backgroundColor: "transparent", flex: 0}}/>
+                 style={{backgroundColor: '#d6c0b0', flex: 0}}/>
         );
     }
 
