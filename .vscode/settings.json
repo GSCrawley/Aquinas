@@ -1,0 +1,6 @@
+{
+    "codeium.enableSearch": true,
+    "tabnine.logEngine": true,
+    "tabnine.receiveBetaChannelUpdates": true,
+    "tabnine.experimentalAutoImports": false
+}

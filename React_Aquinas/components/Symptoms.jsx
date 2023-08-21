@@ -38,7 +38,7 @@ function SymptomFormScreen({route, navigation}) {
         });
         setMessage(response.data);
         // console.log(response.data);
-        navigation.navigate('Diagnosis', {message: message, durl: url, token});
+        navigation.navigate('Diagnosis', {message: response.data, durl: url, token});
         emptyList()
     } catch (error) {
         if (error.request && connectionAttempts <= 5) {

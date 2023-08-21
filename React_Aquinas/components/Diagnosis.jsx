@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import axios from 'axios';
 
-export default function Diagnosis(route, navigation) {
+export default function Diagnosis({route, navigation}) {
   const [text, setText] = useState('');
     const message  = route.params.message;
     const [loading, setLoading] = useState(true);
