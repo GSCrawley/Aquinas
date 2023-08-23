@@ -117,17 +117,17 @@ def location_data(user_id, location):
     return jsonify(set_location)
 
 
-@app.route('/provider-register', methods=['GET', 'POST'])
-def provider_register():
-    data = request.get_json()
+# @app.route('/provider-register', methods=['GET', 'POST'])
+# def provider_register():
+#     data = request.get_json()
 
-    name = data['name']
-    email = data['email']
-    password = data['password']
-    specialty = data['specialty']
+#     name = data['name']
+#     email = data['email']
+#     password = data['password']
+#     specialty = data['specialty']
 
-    new_provider = create_new_provider_vertex(name, email, password, specialty)
-    return jsonify(new_provider)
+#     new_provider = create_new_provider_vertex(name, email, password, specialty)
+#     return jsonify(new_provider)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -139,15 +139,15 @@ def login():
     response = user_login(email, password)
     return response
 
-@app.route('/provider-login', methods=['GET', 'POST'])
-def provider_login():
-    data = request.get_json()
+# @app.route('/provider-login', methods=['GET', 'POST'])
+# def provider_login():
+#     data = request.get_json()
 
-    email = data['email']
-    password = data['password']
+#     email = data['email']
+#     password = data['password']
 
-    response = care_provider_login(email, password)
-    return response
+#     response = care_provider_login(email, password)
+#     return response
     
 
 @app.route('/profile', methods=['GET', 'POST'])
@@ -159,27 +159,27 @@ def profile():
 
     return jsonify(current_user_info)
 
-@app.route('/provider-profile', methods=['GET', 'POST'])
-def provider_profile():
-    data = request.get_json()
+# @app.route('/provider-profile', methods=['GET', 'POST'])
+# def provider_profile():
+#     data = request.get_json()
 
-    current_user = data['identity']
-    current_user_info = get_provider_profile(current_user)
+#     current_user = data['identity']
+#     current_user_info = get_provider_profile(current_user)
 
-    return jsonify(current_user_info)
+#     return jsonify(current_user_info)
 
-@app.route('/add-patient', methods=['GET', 'POST'])
-def add_patient():
-    data = request.get_json()
-    patient_id_data = data['patient']
-    provider_id_data = data['provider']
-    result = get_user_profile(patient_id_data)
-    print(result)
-    if result == [{'User': []}]:
-        return jsonify(result[0])
-    else:
-        patient_id = provider_add_patient(patient_id_data, provider_id_data)
-        return jsonify(patient_id)
+# @app.route('/add-patient', methods=['GET', 'POST'])
+# def add_patient():
+#     data = request.get_json()
+#     patient_id_data = data['patient']
+#     provider_id_data = data['provider']
+#     result = get_user_profile(patient_id_data)
+#     print(result)
+#     if result == [{'User': []}]:
+#         return jsonify(result[0])
+#     else:
+#         patient_id = provider_add_patient(patient_id_data, provider_id_data)
+#         return jsonify(patient_id)
 
 @app.route('/symptoms', methods=['GET', 'POST'])
 def symptoms():

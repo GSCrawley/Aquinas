@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import {View, TextInput, Text, TouchableOpacity, ScrollView, StyleSheet, Keyboard} from 'react-native';
 import axios from 'axios';
+import { ContainerStyles, TextStyles, ButtonStyles, Colors } from './Styles.jsx';
 
 var symptomsLst = [];
 function SymptomFormScreen({route, navigation}) {
@@ -9,7 +10,7 @@ function SymptomFormScreen({route, navigation}) {
   const [message, setMessage] = useState([]);
   const { token } = route.params;
   var { url } = route.params;
-  const [durl, setURL] = useState([]);
+  const [durl, setDurl] = useState([]);
   connectionAttempts = 0
   
   const emptyList = () => {
@@ -22,7 +23,8 @@ function SymptomFormScreen({route, navigation}) {
       try {
         const response = await fetch('http://localhost:6000/disease_server'); // Replace with your actual API URL
         const data = await response.json();
-        setURL(data.url); // Once the data is fetched, update the 'url' state with the received URL
+        setDurl(data.url); // Once the data is fetched, update the 'url' state with the received URL
+      console.log(data.url)
       } catch (error) {
         console.error('Error fetching URL:', error);
       }
@@ -38,7 +40,7 @@ function SymptomFormScreen({route, navigation}) {
         });
         setMessage(response.data);
         // console.log(response.data);
-        navigation.navigate('Diagnosis', {message: response.data, durl: url, token});
+        navigation.navigate('Diagnosis', {message: response.data, url: durl, token});
         emptyList()
     } catch (error) {
         if (error.request && connectionAttempts <= 5) {

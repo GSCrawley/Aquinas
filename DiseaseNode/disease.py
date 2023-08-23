@@ -76,4 +76,4 @@ def care_provider_disease_data(request, CNM_url, KAN_url):
         return jsonify(disease_list)
     except Exception as e:
         print(str(e))
-        return jsonify({'error': str(e)}), 400 
+        return jsonify({'error': str(e)}), 400

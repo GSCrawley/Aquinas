@@ -1,6 +1,10 @@
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split, cross_val_score
+import numpy as np 
+
+from sklearn.model_selection import train_test_split, cross_val_score;
+
+# logging.info("Import finished")
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from scipy.stats import t, ttest_ind
@@ -71,7 +75,7 @@ def make_matrix(data):
     return(df)
 
 # do_stats_stuff(disease, symptoms)
-def learn(matrix, user_syptoms):
+def learn(matrix, user_symptoms):
     df = matrix
 
     # Step 1: Data Preparation

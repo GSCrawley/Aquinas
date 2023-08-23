@@ -30,10 +30,10 @@ def home():
 def disease():
     return disease_data(request, CNM_url, KAN_url)
 
-@app.route('/care_provider_disease', methods = ['GET', 'POST'])
-@jwt_required()
-def care_provider_disease():
-    return care_provider_disease_data(request, CNM_url, KAN_url)
+# @app.route('/care_provider_disease', methods = ['GET', 'POST'])
+# @jwt_required()
+# def care_provider_disease():
+#     return care_provider_disease_data(request, CNM_url, KAN_url)
 
 @app.route('/disease_name_search', methods = ['GET', 'POST'])
 @jwt_required()

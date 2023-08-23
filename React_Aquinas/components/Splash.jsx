@@ -17,19 +17,21 @@ import { ContainerStyles, ButtonStyles, TextStyles } from './Styles';
 export default Home = () => {
   const [data, setData] = useState(null);
   const [isAnimationActive, setIsAnimationActive] = useState(false);
-  const [cpdata, setCPDATA] = useState(null);
+  // const [cpdata, setCPDATA] = useState(null);
   const navigation = useNavigation();
 
   
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('http://localhost:6000/patient_server');
-      // const result = await axios.get('https://nomadic-oarlock-392318.uw.r.appspot.com/edge');
       setData(result.data.url);
+      console.log(result.data.url)
+
     };
     fetchData();
   }, []);
 
+  
   useEffect(() => {
     startAnimation();
   }, []);
