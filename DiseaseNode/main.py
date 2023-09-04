@@ -28,7 +28,8 @@ def home():
 @app.route('/disease', methods = ['GET', 'POST'])
 @jwt_required()
 def disease():
-    return disease_data(request, CNM_url, KAN_url)
+    return('test')
+    # return disease_data(request, CNM_url, KAN_url)
 
 # @app.route('/care_provider_disease', methods = ['GET', 'POST'])
 # @jwt_required()

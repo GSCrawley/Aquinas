@@ -3,21 +3,12 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import SVGatorComponent from '../assets/Lotus.js';
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/native';
-import { ContainerStyles, ButtonStyles, TextStyles } from './Styles';
-
-// const AnimatedIcon = () => {
-//   return (
-//   <View>
-//   <SVGatorComponent style={styles.container}
-//     isAnimationActive={true} />
-//   </View>
-// )
-// };  
+import { ContainerStyles, ButtonStyles, TextStyles } from './Styles.jsx';
+ 
 
 export default Home = () => {
   const [data, setData] = useState(null);
   const [isAnimationActive, setIsAnimationActive] = useState(false);
-  // const [cpdata, setCPDATA] = useState(null);
   const navigation = useNavigation();
 
   

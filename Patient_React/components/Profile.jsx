@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { ContainerStyles, ButtonStyles, TextStyles, Colors, Spacing } from './Styles';
 import axios from 'axios';
 
 function ProfileScreen({ route, navigation }) {
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [DOB, setDOB] = useState('');
-  const [profilePicUrl, setProfilePicUrl] = useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png');
+  const [profilePicUrl, setProfilePicUrl] = useState('/Users/gideoncrawley/development/Aquinas/React_Aquinas/assets/St_Psychonaut.jpg');
   const { token, url } = route.params;
   const [data, setData] = useState(null);
 
@@ -55,7 +56,7 @@ function ProfileScreen({ route, navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={ContainerStyles.container}>
       <View style={styles.profileContainer}>
         <Image source={{ uri: profilePicUrl }} style={styles.profilePic} />
         <View style={styles.profileInfo}>
@@ -69,12 +70,14 @@ function ProfileScreen({ route, navigation }) {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={styles.button}
+          style={ButtonStyles.primaryButton}
           onPress={() => navigation.navigate('Symptoms', { token, url: data })}
         >
-          <Text style={styles.buttonText}>Symptom Input Form</Text>
+          <Text style={styles.buttonText}>Symptom Input</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleLogout}>
+        </View>
+        <View style={styles.buttonContainer}>
+        <TouchableOpacity style={ButtonStyles.primaryButton} onPress={handleLogout}>
           <Text style={styles.buttonText}>Log out</Text>
         </TouchableOpacity>
       </View>
@@ -100,6 +103,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75,
+    marginLeft: 20
   },
   profileInfo: {
     flex: 1,
@@ -114,9 +118,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   history: {
-    width: '100%',
+    width: '90%',
     height: 400,
-    backgroundColor: 'lightgrey',
+    borderRadius:10,
+    backgroundColor: Colors.inputField,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -129,6 +134,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginTop: 20,
+    // marginBottom: 10,
   },
   button:{
     backgroundColor:'#4d87bf',

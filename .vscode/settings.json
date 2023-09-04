@@ -1,8 +1,13 @@
 {
-    "codeium.enableSearch": true,
     "tabnine.logEngine": true,
     "tabnine.receiveBetaChannelUpdates": true,
     "tabnine.experimentalAutoImports": false,
     "CodeGPT.model": "gpt-4",
-    "CodeGPT.temperature": 0.1
+    "CodeGPT.temperature": 0.1,
+    "codeium.enableSearch": true,
+    "easycode-canary.openAI ApiKey": "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",
+    "easycode-canary.model": "gpt-4",
+    "easycode.model": "gpt-3.5-turbo",
+    "easycode.openAI ApiKey": "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",
+    "easycode.codeLens": true
 }
